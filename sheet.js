@@ -1,6 +1,11 @@
 const { google } = require("googleapis");
 const path = require("path");
 const fs = require("fs");
+const dayjs = require('dayjs');
+const utc = require('dayjs/plugin/utc'); // Para lidar com UTC
+const timezone = require('dayjs/plugin/timezone'); // Para fusos horários
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 // Caminho para o arquivo da chave da conta de serviço
 const CREDENTIALS_PATH = path.join(__dirname, "credentials.json"); // 👈 renomeie conforme sua chave
@@ -21,7 +26,7 @@ async function salvarPedido(order) {
 
     const values = [
       [
-        new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }),
+        dayjs().tz('America/Sao_Paulo').format('DD/MM/YYYY HH:mm:ss'),
         order.nome,
         order.pedido,
         order.total,
