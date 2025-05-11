@@ -10,10 +10,12 @@ const SPREADSHEET_ID = "1rCP7VRR9LuDWEHoHUYKxD-DjDJYYFSkhZQyC3JlIK-A";
 
 async function salvarPedido(order) {
   try {
+    const credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
     const auth = new google.auth.GoogleAuth({
-      keyFile: CREDENTIALS_PATH,
-      scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+      credentials,
+      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
+
 
     const sheets = google.sheets({ version: "v4", auth: await auth.getClient() });
 
