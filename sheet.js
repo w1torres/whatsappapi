@@ -21,7 +21,7 @@ async function salvarPedido(order) {
 
     const values = [
       [
-        new Date().toLocaleString(),
+        new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }),
         order.nome,
         order.pedido,
         order.total,
