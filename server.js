@@ -8,7 +8,6 @@ const { interpretarPedido } = require("./calculadora");
 const {ajustarData} = require("./utils")
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
-const { MessagingResponse } = require("twilio").twiml;
 
 // Habilita parsing de dados tipo application/x-www-form-urlencoded (Twilio usa esse formato!)
 app.use(bodyParser.urlencoded({ extended: false }));
